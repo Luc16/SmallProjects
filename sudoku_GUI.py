@@ -161,6 +161,16 @@ class Game:
             0, 0, 0, 8, 0, 6, 0, 0, 5,
             3, 7, 0, 2, 0, 0, 0, 9, 0,
             8, 0, 2, 0, 3, 0, 0, 1, 6]
+        self.board_BTI = [
+            [2, 3, 0, 0, 5, 0, 6, 0, 9],
+            [0, 9, 0, 0, 0, 2, 0, 7, 1],
+            [5, 0, 0, 7, 0, 9, 0, 0, 0],
+            [0, 6, 5, 0, 0, 0, 9, 0, 0],
+            [9, 0, 0, 0, 0, 0, 0, 0, 4],
+            [0, 0, 1, 0, 0, 0, 2, 6, 0],
+            [0, 0, 0, 8, 0, 6, 0, 0, 5],
+            [3, 7, 0, 2, 0, 0, 0, 9, 0],
+            [8, 0, 2, 0, 3, 0, 0, 1, 6]]
         self.fixed = []
         self.listenToNum = False
         self.index = None
@@ -185,6 +195,11 @@ class Game:
                                 image_normal=IMAGE_NORMAL, image_hover=IMAGE_HOVER,
                                 image_down=IMAGE_DOWN)
         self.all_sprites.add(self.BT_button)
+        self.BTI_button = Button(545, 380, 200, 80, self.back_track_w_impl,
+                                FONT, text='Back Track w/ impl', text_color=(0, 0, 0),
+                                image_normal=IMAGE_NORMAL, image_hover=IMAGE_HOVER,
+                                image_down=IMAGE_DOWN)
+        self.all_sprites.add(self.BTI_button)
 
     def quit_game(self):
         self.done = True
@@ -244,8 +259,9 @@ class Game:
             if not self.end:
                 if event.type == KEYDOWN:
                     if event.key == K_SPACE:
-                        self.back_track(self.board_BT, self.fixed)
+                        self.back_track_w_impl(self.board_BTI, [])
                 self.BT_button.handle_event(event, self.board_BT, self.fixed)
+                self.BTI_button.handle_event(event, self.board_BTI, [])
                 for i in range(len(self.board)):
                     self.board[i].handle_event(event, i)
                 if self.listenToNum:
@@ -342,7 +358,7 @@ class Game:
         self.screen.blit(text_surf_f, text_rect_f)
         self.end = True
 
-    def valid(self, nt, idx, board):
+    def valid_i(self, nt, idx, board):
         mult = int(idx / 9)
         square = self.identify_square(mult, idx)
         if nt == 0:
@@ -370,7 +386,7 @@ class Game:
             if i not in fixed:
                 if board[i] != 0:
                     self.erase(i)
-                board[i] = self.valid(board[i], i, board)
+                board[i] = self.valid_i(board[i], i, board)
                 if board[i] != 0:
                     self.board[i].change_text(str(board[i]), True)
                 self.handle_events()
@@ -379,11 +395,12 @@ class Game:
                 if board[i] == 0:
                     while True:
                         if i == 0:
+                            self.lose()
                             return 'Impossible'
                         if i not in fixed:
                             board[i] = 0
                             self.erase(i)
-                        if ((i - 1) not in fixed) and self.valid(board[i - 1], i - 1, board) != 0:
+                        if ((i - 1) not in fixed) and self.valid_i(board[i - 1], i - 1, board) != 0:
                             i -= 2
                             break
                         else:
@@ -391,6 +408,104 @@ class Game:
             i += 1
         self.win = True
         return board
+
+    def identify_square_r(self, row, col):
+        a = int(row / 3) * 3
+        b = int(col / 3) * 3
+        return [[a, b], [a, b + 1], [a, b + 2], [a + 1, b], [a + 1, b + 1], [a + 1, b + 2],
+                [a + 2, b], [a + 2, b + 1], [a + 2, b + 2]]
+
+    def valid(self, num, row, col, board):
+        square = self.identify_square_r(row, col)
+        a = True
+        for k in range(9):
+            if num == board[k][col]:
+                a = False
+                break
+            if num == board[row][k]:
+                a = False
+                break
+            if num == board[square[k][0]][square[k][1]]:
+                a = False
+                break
+        return a
+
+    def make_implications(self, board, row, col, implicated):
+        can_implicate = True
+        while can_implicate:
+            prev_board = board
+            while row < len(board):
+                nums = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+                if board[row][col] == 0:
+                    square = self.identify_square_r(row, col)
+                    for k in range(9):
+                        _col = board[k][col]
+                        _row = board[row][k]
+                        sqr = board[square[k][0]][square[k][1]]
+                        if 0 != _col and _col in nums:
+                            nums.remove(_col)
+                        if 0 != _row and _row in nums:
+                            nums.remove(_row)
+                        if 0 != sqr and sqr in nums:
+                            nums.remove(sqr)
+                if len(nums) == 1:
+                    implicated.append([row, col])
+                    board[row][col] = nums[0]
+                    self.board[row*9 + col].change_text(str(board[row][col]), True)
+                    self.handle_events()
+                    self.draw()
+                    time.sleep(0.1)
+                col += 1
+                if col == len(board[row]):
+                    col = 0
+                    row += 1
+            if board == prev_board:
+                return implicated
+
+    def delete_implications(self, board, implicated):
+        deleted = []
+        if len(implicated) > 0:
+            for i in implicated:
+                deleted.append([i[0], i[1]])
+                board[i[0]][i[1]] = 0
+                self.erase(i[0]*9 + i[1])
+            deleted.sort()
+        return deleted
+
+    def next(self, board):
+        for row in range(len(board)):
+            for col in range(len(board[row])):
+                if board[row][col] == 0:
+                    return [row, col]
+
+    def back_track_w_impl(self, board, impl, row=0, col=0):
+        self.end = True
+        nxt = self.next(board)
+        if nxt is None:
+            self.win = True
+            return True
+        row = nxt[0]
+        col = nxt[1]
+
+        if row == -1:
+            return board
+
+        for i in range(1, 10):
+            num = i
+            if self.valid(num, row, col, board):
+                board[row][col] = num
+                self.board[row*9 + col].change_text(str(num), True)
+                self.handle_events()
+                self.draw()
+                time.sleep(0.1)
+                impl = self.make_implications(board, row, col, impl)
+                if self.back_track_w_impl(board, impl, row, col):
+                    return board
+                self.delete_implications(board, impl)
+                impl = []
+                board[row][col] = 0
+                self.erase((9*row+col))
+        return False
 
 
 if __name__ == '__main__':
