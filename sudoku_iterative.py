@@ -8,7 +8,7 @@ def identifySquare(mult, idx):
 
 
 def valid(nt, idx, board):
-    mult = int(idx / 9)
+    mult = idx // 9
     square = identifySquare(mult, idx)
     if nt == 0:
         nt = 1
@@ -42,7 +42,6 @@ def backTrack(board):
                 while True:
                     if i == 0:
                         return 'Impossible'
-                    # printB(board)
                     if i not in fixed:
                         board[i] = 0
                     if ((i-1) not in fixed) and valid(board[i - 1], i - 1, board) != 0:
@@ -68,6 +67,70 @@ def printB(board):
     print(board[63:72])
     print(board[72:81])
     print()
+
+
+def make_implications(board, idx):
+    can_implicate = True
+    implicated = []
+    while can_implicate:
+        prev_board = board
+        for i in range(idx+1, len(board)):
+            mult = i // 9
+            square = identifySquare(mult, i)
+            nums = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+            for k in range(9):
+                col = board[i - (9 * mult) + 9 * k]
+                row = board[k + (9 * mult)]
+                sqr = board[square[k]]
+                if 0 != col and col in nums:
+                    nums.remove(col)
+                if 0 != row and row in nums:
+                    nums.remove(row)
+                if 0 != sqr and sqr in nums:
+                    nums.remove(sqr)
+                if len(nums) == 1:
+                    break
+            if len(nums) == 1:
+                implicated.append(i)
+                board[i] = nums[0]
+        if board == prev_board:
+            return [board, implicated]
+
+
+def delete_implications(board, implicated):
+    for i in implicated:
+        board[i] = 0
+
+
+def back_track_w_imp(board_in):
+    fixed = []
+    board = board_in
+    impl = []
+    for i in range(len(board)):
+        if board[i] != 0:
+            fixed.append(i)
+    i = 0
+    while i < len(board):
+        if i not in fixed and board[i] == 0:
+            board[i] = valid(board[i], i, board)
+            if board[i] == 0:
+                while True:
+                    delete_implications(board, impl[1])
+                    if i == 0:
+                        return 'Impossible'
+                    if i not in fixed:
+                        board[i] = 0
+                    if ((i - 1) not in fixed) and valid(board[i - 1], i - 1, board) != 0:
+                        i -= 2
+                        break
+                    else:
+                        i -= 1
+        impl = make_implications(board, i)
+        board = impl[0]
+        i += 1
+        # print(i)
+        # printB(board)
+    return board
 
 
 if __name__ == '__main__':
@@ -104,6 +167,11 @@ if __name__ == '__main__':
         3, 7, 0, 2, 0, 0, 0, 9, 0,
         8, 0, 2, 0, 3, 0, 0, 1, 6]
 
-    print(backTrack(brd))
-    printB(backTrack(brd))
+    # print(backTrack(brd))
+    printB(backTrack(brd_hard))
+    print("Program took:", time.time() - start_time, "to run")
+
+    start_time = time.time()
+    # print(back_track_w_imp(brd))
+    printB(back_track_w_imp(brd_hard))
     print("Program took:", time.time() - start_time, "to run")
