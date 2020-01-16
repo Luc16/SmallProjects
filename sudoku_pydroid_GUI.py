@@ -3,7 +3,8 @@ from pygame.locals import *
 import time
 
 pg.init()
-screen = pg.display.set_mode((800, 600))
+screen = pg.display.set_mode((800, 1000))
+FONT_N = pg.font.SysFont('Comic Sans MS', 24)
 FONT = pg.font.SysFont('Comic Sans MS', 32)
 FONT_C = pg.font.SysFont('Comic Sans MS', 50)
 FONT_S = pg.font.SysFont('Comic Sans MS', 64)
@@ -22,9 +23,9 @@ IMAGE_DOWN.fill(pg.Color('aquamarine1'))
 class Button(pg.sprite.Sprite):
 
     def __init__(self, x, y, width, height, callback,
-                 font=FONT, text='', text_color=(0, 0, 0),
-                 image_normal=IMAGE_NORMAL, image_hover=IMAGE_HOVER,
-                 image_down=IMAGE_DOWN):
+                         font=FONT, text='', text_color=(0, 0, 0),
+                         image_normal=IMAGE_NORMAL, image_hover=IMAGE_HOVER,
+                         image_down=IMAGE_DOWN):
         super().__init__()
         self.image_normal = pg.transform.scale(image_normal, (width, height))
         self.image_hover = pg.transform.scale(image_hover, (width, height))
@@ -67,6 +68,7 @@ class BoardPiece(pg.sprite.Sprite):
                  image_normal=IMAGE_NORMAL, image_hover=IMAGE_HOVER,
                  image_down=IMAGE_DOWN):
         super().__init__()
+        # Scale the images to the desired size (doesn't modify the originals).
         self.image_normal = pg.transform.scale(image_normal, (width, height))
         self.image_hover = pg.transform.scale(image_hover, (width, height))
         self.image_down = pg.transform.scale(image_down, (width, height))
@@ -136,6 +138,7 @@ class Game:
         self.screen = screen
         self.all_sprites = pg.sprite.Group()
         self.text = ''
+        self.nums = []
         self.board = []
         self.board_pos = []
         self.board_txt = [['', False] for i in range(81)]
@@ -173,31 +176,48 @@ class Game:
         self.listenToNum = False
         self.index = None
         self.win = False
+        self.size = 2
 
         b = 4
-        a = 25
+        a = 40
         for x in range(81):
             if (x / 9) % 3 == 0:
                 b += 4
             if x % 3 == 0:
                 a += 4
             if x % 9 == 0:
-                a = 25
+                a = 40
             self.board_pos.append([(x % 9) * 50 + a, (x // 9) * 66 + b])
-            self.board.append(BoardPiece(self.board_pos[x][0], self.board_pos[x][1], 48, 64, self.press_button,
+            self.board.append(BoardPiece(self.board_pos[x][0]*self.size, self.board_pos[x][1]*self.size,
+                                         48*self.size, 64*self.size, self.press_button,
                                          self.button_out, FONT, self.text, (255, 255, 255),
                                          IMAGE_NORMAL, IMAGE_HOVER, IMAGE_DOWN))
             self.all_sprites.add(self.board[x])
-        self.BT_button = Button(545, 480, 200, 80, self.back_track,
+        self.BT_button = Button(250*self.size, 838*self.size, 250*self.size, 100*self.size, self.back_track,
                                 FONT, text='Back Track', text_color=(0, 0, 0),
                                 image_normal=IMAGE_NORMAL, image_hover=IMAGE_HOVER,
                                 image_down=IMAGE_DOWN)
         self.all_sprites.add(self.BT_button)
-        self.BTI_button = Button(545, 380, 200, 80, self.back_track_w_impl,
+        self.BTI_button = Button(250*self.size, 725*self.size, 250*self.size, 100*self.size, self.back_track_w_impl,
                                 FONT, text='Back Track w/ impl', text_color=(0, 0, 0),
                                 image_normal=IMAGE_NORMAL, image_hover=IMAGE_HOVER,
                                 image_down=IMAGE_DOWN)
         self.all_sprites.add(self.BTI_button)
+        self.enter_button = Button(380 * self.size, 615 * self.size, 120 * self.size, 100 * self.size,
+                                 self.enter_but,
+                                 FONT_N, text='ENTER', text_color=(0, 0, 0),
+                                 image_normal=IMAGE_NORMAL, image_hover=IMAGE_HOVER,
+                                 image_down=IMAGE_DOWN)
+        self.all_sprites.add(self.enter_button)
+        x = 0
+        for i in range(9):
+            self.nums.append(Button(x * self.size, 625 * self.size, 37 * self.size, 80 * self.size,
+                                       self.num_but,
+                                       FONT_N, text=str(i+1), text_color=(0, 0, 0),
+                                       image_normal=IMAGE_NORMAL, image_hover=IMAGE_HOVER,
+                                       image_down=IMAGE_DOWN))
+            self.all_sprites.add(self.nums[i])
+            x += 42
 
     def quit_game(self):
         self.done = True
@@ -255,11 +275,11 @@ class Game:
             if event.type == pg.QUIT:
                 self.done = True
             if not self.end:
-                if event.type == KEYDOWN:
-                    if event.key == K_SPACE:
-                        self.back_track_w_impl(self.board_BTI, [])
+                self.enter_button.handle_event(event, [], [])
                 self.BT_button.handle_event(event, self.board_BT, self.fixed)
                 self.BTI_button.handle_event(event, self.board_BTI, [])
+                for i in range(len(self.nums)):
+                    self.nums[i].handle_event(event, [str(i+1)], [])
                 for i in range(len(self.board)):
                     self.board[i].handle_event(event, i)
                 if self.listenToNum:
@@ -307,18 +327,37 @@ class Game:
                             self.button_out(self.index)
 
     def erase(self, idx):
-        self.board[idx] = BoardPiece(self.board_pos[idx][0], self.board_pos[idx][1], 48, 64, self.press_button,
+        self.board[idx] = BoardPiece(self.board_pos[idx][0]*self.size, self.board_pos[idx][1]*self.size, 48*self.size, 64*self.size, self.press_button,
                                      self.button_out, FONT, self.text, (255, 255, 255),
                                      IMAGE_NORMAL, IMAGE_HOVER, IMAGE_DOWN)
         self.board_txt[idx][1] = False
         self.all_sprites.add(self.board[idx])
 
+    def enter_but(self, a1, a2):
+        self.erase(self.index)
+        self.board[self.index].change_text(self.board_txt[self.index][0], True)
+        self.board_txt[self.index][1] = True
+        self.entered = True
+        if self.board_txt[self.index][0] != str(self.board_a[self.index]):
+            self.error += 1
+            self.errorText[0] = 'Errors: ' + str(self.error)
+            self.erase(self.index)
+        self.button_out(self.index)
+
+    def num_but(self, a1, a2):
+        if not self.board_txt[self.index][1]:
+            self.entered = False
+            self.erase(self.index)
+            self.board_txt[self.index][0] = a1[0]
+            self.board[self.index].change_text(self.board_txt[self.index][0], False)
+            self.button_out(self.index)
+
     def error_text(self):
-        image_pos_1 = (650, 36)
+        image_pos_1 = (125*self.size, 775*self.size)
         text_surf_e = FONT_E.render(self.errorText[0], True, (255, 0, 0))
         text_rect_e = text_surf_e.get_rect(center=image_pos_1)
         self.screen.blit(text_surf_e, text_rect_e)
-        image_pos_2 = (650, 108)
+        image_pos_2 = (125*self.size, 811*self.size)
         text_surf_oo5 = FONT_E.render(self.errorText[1], True, (255, 0, 0))
         text_rect_oo5 = text_surf_oo5.get_rect(center=image_pos_2)
         self.screen.blit(text_surf_oo5, text_rect_oo5)
@@ -343,14 +382,14 @@ class Game:
         pg.display.flip()
 
     def lose(self):
-        image_pos_1 = (400, 300)
+        image_pos_1 = (580, 650)
         text_surf_l = FONT_F.render('You Lose', True, (255, 0, 0))
         text_rect_l = text_surf_l.get_rect(center=image_pos_1)
         self.screen.blit(text_surf_l, text_rect_l)
         self.end = True
 
     def win_f(self):
-        image_pos_1 = (400, 300)
+        image_pos_1 = (580, 650)
         text_surf_f = FONT_F.render('You Win!!', True, (255, 0, 0))
         text_rect_f = text_surf_f.get_rect(center=image_pos_1)
         self.screen.blit(text_surf_f, text_rect_f)

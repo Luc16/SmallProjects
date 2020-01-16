@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ba320ef4-7c11-4aa6-a19b-826c66d87f56" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/sudoku_pydroid_GUI.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sudoku_iterative.py" beforeDir="false" afterPath="$PROJECT_DIR$/sudoku_iterative.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sudoku_GUI.py" beforeDir="false" afterPath="$PROJECT_DIR$/sudoku_GUI.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -13,7 +14,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sudoku_iterative.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1620">
@@ -22,11 +23,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/sudoku_recursive.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="103">
-              <caret line="155" column="10" lean-forward="true" selection-start-line="155" selection-start-column="10" selection-end-line="164" selection-end-column="36" />
+            <state relative-caret-position="301">
+              <caret line="173" lean-forward="true" selection-start-line="173" selection-end-line="173" />
             </state>
           </provider>
         </entry>
@@ -34,18 +35,19 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sudoku_GUI.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="196">
-              <caret line="128" column="11" selection-start-line="128" selection-start-column="11" selection-end-line="128" selection-end-column="11" />
+            <state relative-caret-position="149">
+              <caret line="187" column="75" selection-start-line="187" selection-start-column="75" selection-end-line="187" selection-end-column="75" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
+                <element signature="e#617#2317#0" />
                 <element signature="e#844#1649#0" />
+                <element signature="e#1708#2317#0" />
                 <element signature="e#2361#4937#0" />
+                <element signature="e#2597#3460#0" />
                 <element signature="e#3512#4210#0" />
                 <element signature="e#4247#4302#0" />
                 <element signature="e#4332#4389#0" />
                 <element signature="e#4440#4937#0" />
-                <element signature="e#4957#19659#0" />
-                <element signature="e#4993#7940#0" />
                 <element signature="e#5421#5773#0" />
                 <element signature="e#7248#7264#0" />
                 <element signature="e#7328#7478#0" />
@@ -72,6 +74,20 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/sudoku_pydroid_GUI.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1695">
+              <caret line="213" column="88" selection-start-line="213" selection-start-column="88" selection-end-line="213" selection-end-column="88" />
+              <folding>
+                <element signature="e#0#19#0" expanded="true" />
+                <element signature="e#618#2235#0" />
+                <element signature="e#2279#4851#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -89,9 +105,14 @@
       <find>error_text</find>
       <find>self.error_text</find>
       <find>identifyS</find>
+      <find>*2</find>
+      <find>*self.size</find>
+      <find>//self.size</find>
     </findStrings>
     <replaceStrings>
       <replace>indentify_s</replace>
+      <replace>//self.size</replace>
+      <replace>*self.size</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -102,16 +123,10 @@
       <list>
         <option value="$PROJECT_DIR$/sudoku.py" />
         <option value="$PROJECT_DIR$/sudoku_GUI2.py" />
+        <option value="$PROJECT_DIR$/sudoku_iterative.py" />
         <option value="$PROJECT_DIR$/sudoku_recursive.py" />
         <option value="$PROJECT_DIR$/sudoku_GUI.py" />
-        <option value="$PROJECT_DIR$/sudoku_iterative.py" />
-      </list>
-    </option>
-  </component>
-  <component name="ProjectConfigurationFiles">
-    <option name="files">
-      <list>
-        <option value="$PROJECT_DIR$/.idea/vcs.xml" />
+        <option value="$PROJECT_DIR$/sudoku_pydroid_GUI.py" />
       </list>
     </option>
   </component>
@@ -155,7 +170,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.sudoku_GUI">
+  <component name="RunManager" selected="Python.sudoku_pydroid_GUI">
     <configuration name="sudoku" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="SmallProjects" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -198,6 +213,27 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="sudoku_pydroid_GUI" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="SmallProjects" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/sudoku_pydroid_GUI.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="sudoku_recursive" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="SmallProjects" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -221,6 +257,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.sudoku_pydroid_GUI" />
         <item itemvalue="Python.sudoku_GUI" />
         <item itemvalue="Python.sudoku_recursive" />
         <item itemvalue="Python.sudoku" />
@@ -247,13 +284,13 @@
       <window_info id="Favorites" order="0" side_tool="true" />
       <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.19405204" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="0" visible="true" weight="0.32924962" />
+      <window_info anchor="bottom" id="Terminal" order="0" weight="0.32924962" />
       <window_info anchor="bottom" id="Event Log" order="1" sideWeight="0.5003791" side_tool="true" weight="0.32924962" />
       <window_info anchor="bottom" id="Python Console" order="2" weight="0.32924962" />
       <window_info anchor="bottom" id="Message" order="3" />
       <window_info anchor="bottom" id="Find" order="4" />
       <window_info anchor="bottom" id="Version Control" order="5" />
-      <window_info anchor="bottom" id="Run" order="6" sideWeight="0.4996209" weight="0.32924962" />
+      <window_info active="true" anchor="bottom" id="Run" order="6" sideWeight="0.4996209" visible="true" weight="0.32924962" />
       <window_info anchor="bottom" id="Debug" order="7" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
@@ -284,27 +321,28 @@
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/sudoku_GUI2.py" />
-    <entry file="file://$PROJECT_DIR$/sudoku_recursive.py">
+    <entry file="file://$PROJECT_DIR$/sudoku_iterative.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="103">
-          <caret line="155" column="10" lean-forward="true" selection-start-line="155" selection-start-column="10" selection-end-line="164" selection-end-column="36" />
+        <state relative-caret-position="1620">
+          <caret line="108" selection-start-line="108" selection-end-line="108" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/sudoku_GUI.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="128" column="11" selection-start-line="128" selection-start-column="11" selection-end-line="128" selection-end-column="11" />
+        <state relative-caret-position="149">
+          <caret line="187" column="75" selection-start-line="187" selection-start-column="75" selection-end-line="187" selection-end-column="75" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
+            <element signature="e#617#2317#0" />
             <element signature="e#844#1649#0" />
+            <element signature="e#1708#2317#0" />
             <element signature="e#2361#4937#0" />
+            <element signature="e#2597#3460#0" />
             <element signature="e#3512#4210#0" />
             <element signature="e#4247#4302#0" />
             <element signature="e#4332#4389#0" />
             <element signature="e#4440#4937#0" />
-            <element signature="e#4957#19659#0" />
-            <element signature="e#4993#7940#0" />
             <element signature="e#5421#5773#0" />
             <element signature="e#7248#7264#0" />
             <element signature="e#7328#7478#0" />
@@ -330,10 +368,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sudoku_iterative.py">
+    <entry file="file://$PROJECT_DIR$/sudoku_pydroid_GUI.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1620">
-          <caret line="108" selection-start-line="108" selection-end-line="108" />
+        <state relative-caret-position="1695">
+          <caret line="213" column="88" selection-start-line="213" selection-start-column="88" selection-end-line="213" selection-end-column="88" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+            <element signature="e#618#2235#0" />
+            <element signature="e#2279#4851#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sudoku_recursive.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="301">
+          <caret line="173" lean-forward="true" selection-start-line="173" selection-end-line="173" />
         </state>
       </provider>
     </entry>
