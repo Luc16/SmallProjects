@@ -14,7 +14,8 @@ c_sum = []
 final =[]
 distances = []
 for j in range(k):
-    c.append([random.random()*25, random.random()*15])
+    a = random.randint(0, 13)
+    c.append([points[a][0], points[a][1]])
     c_sum.append([0, 0, 0])
 while True:
     for i in range(len(points)):
