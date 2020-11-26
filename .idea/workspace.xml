@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ba320ef4-7c11-4aa6-a19b-826c66d87f56" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Genetica_Algorithm/GA_teste.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/K-mean/K-mean.py" beforeDir="false" afterPath="$PROJECT_DIR$/K-mean/K-mean.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -24,11 +24,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/K-mean/K-mean.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+            <state relative-caret-position="465">
+              <caret line="31" selection-start-line="31" selection-end-line="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Genetica_Algorithm/GA_teste.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="795">
+              <caret line="53" column="31" selection-start-line="53" selection-start-column="30" selection-end-line="53" selection-end-column="31" />
+              <folding>
+                <element signature="e#0#13#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -63,12 +75,14 @@
       <find>*self.size</find>
       <find>//self.size</find>
       <find>}</find>
+      <find>board</find>
     </findStrings>
     <replaceStrings>
       <replace>indentify_s</replace>
       <replace>//self.size</replace>
       <replace>*self.size</replace>
       <replace>]</replace>
+      <replace>c_board</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -86,6 +100,7 @@
         <option value="$PROJECT_DIR$/KNN.py" />
         <option value="$PROJECT_DIR$/KNN/KNN.py" />
         <option value="$PROJECT_DIR$/K-mean/K-mean.py" />
+        <option value="$PROJECT_DIR$/Genetica_Algorithm/GA_teste.py" />
       </list>
     </option>
   </component>
@@ -106,6 +121,11 @@
             <path>
               <item name="SmallProjects" type="b2602c69:ProjectViewProjectNode" />
               <item name="SmallProjects" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SmallProjects" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SmallProjects" type="462c0819:PsiDirectoryNode" />
+              <item name="Genetica_Algorithm" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="SmallProjects" type="b2602c69:ProjectViewProjectNode" />
@@ -149,7 +169,28 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.K-mean">
+  <component name="RunManager" selected="Python.GA_teste">
+    <configuration name="GA_teste" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="SmallProjects" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Genetica_Algorithm" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Genetica_Algorithm/GA_teste.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="K-mean" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="SmallProjects" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -234,34 +275,13 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="sudoku_recursive" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="SmallProjects" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/sudoku_recursive.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.GA_teste" />
         <item itemvalue="Python.K-mean" />
         <item itemvalue="Python.KNN" />
         <item itemvalue="Python.sudoku_pydroid_GUI" />
         <item itemvalue="Python.sudoku_GUI" />
-        <item itemvalue="Python.sudoku_recursive" />
       </list>
     </recent_temporary>
   </component>
@@ -282,7 +302,7 @@
     <frame x="0" y="23" width="1366" height="745" extended-state="0" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.19405204" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.19405204" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="0" weight="0.32924962" />
       <window_info anchor="bottom" id="Event Log" order="1" sideWeight="0.5003791" side_tool="true" weight="0.32924962" />
@@ -290,7 +310,7 @@
       <window_info anchor="bottom" id="Message" order="3" />
       <window_info anchor="bottom" id="Find" order="4" />
       <window_info anchor="bottom" id="Version Control" order="5" weight="0.32924962" />
-      <window_info active="true" anchor="bottom" id="Run" order="6" sideWeight="0.4996209" visible="true" weight="0.32924962" />
+      <window_info anchor="bottom" id="Run" order="6" sideWeight="0.4996209" weight="0.32924962" />
       <window_info anchor="bottom" id="Debug" order="7" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
@@ -376,6 +396,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/K-mean/K-mean.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="31" selection-start-line="31" selection-end-line="31" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/KNN/KNN.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
@@ -383,10 +410,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/K-mean/K-mean.py">
+    <entry file="file://$PROJECT_DIR$/Genetica_Algorithm/GA_teste.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+        <state relative-caret-position="795">
+          <caret line="53" column="31" selection-start-line="53" selection-start-column="30" selection-end-line="53" selection-end-column="31" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
