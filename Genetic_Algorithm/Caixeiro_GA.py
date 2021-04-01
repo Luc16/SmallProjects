@@ -23,12 +23,16 @@ class Brute:
         return score, moves
 
     def run(self, cities):
-        for option in self.final_list:
+        lk = list(self.final_list[0])
+        lk.insert(0, 0)
+        best = self.fit(lk, cities)
+        for option in self.final_list[1:]:
             lk = list(option)
             lk.insert(0, 0)
-            self.score.append(self.fit(lk, cities))
-        self.score.sort()
-        return self.score[0]
+            current = self.fit(lk, cities)
+            if current[0] < best[0]:
+                best = current
+        return best
 
 
 class Child:
@@ -69,7 +73,7 @@ class Solver:
         self.num_cities = len(cities)
         self.final = final
         random.seed()
-        self.keep_pct = 0.25
+        self.keep_pct = 0.1
         self.limit = int(self.keep_pct * self.num_children)
         self.num_gens = 0
 
@@ -95,7 +99,7 @@ class Solver:
             self.next_generation.append(new_child)
 
     def mutate(self):
-        for _ in range(random.randint(0, self.num_children-self.limit)):
+        for _ in range(random.randint(0, (self.num_children-self.limit)//20)):
             chosen_child = random.choice(self.next_generation)
             for _ in range(random.randint(1, self.num_cities)):
                 mutations = random.sample(range(1, self.num_cities), 2)
@@ -176,7 +180,7 @@ class Solver:
 
 
 if __name__ == '__main__':
-    dots = [[1, 2], [4, 1], [3, 5], [2, 4], [6, 2], [9, 5], [16, 11], [34, 29], [9, 7]]
+    dots = [[random.randint(0, 1000), random.randint(0, 1000)] for _ in range(10)]
 
     brute = Brute(len(dots))
     time_start = time.time()
@@ -187,34 +191,40 @@ if __name__ == '__main__':
     print("Brute force time:", time_end-time_start)
     print()
 
-    NUM_CHILDREN = 50
+    NUM_CHILDREN = 150
     DIFFERENT_TESTS = 4
+    FINAL = 20
+    num_attempts = 1000
 
     rounded_brute = round(brute_result[0], 6)
     gens = [0 for _ in range(DIFFERENT_TESTS)]
     accuracy = [0 for _ in range(DIFFERENT_TESTS)]
     reached_best = [0 for _ in range(DIFFERENT_TESTS)]
     times = [0 for _ in range(DIFFERENT_TESTS)]
+    worst_miss = [0 for _ in range(DIFFERENT_TESTS)]
     tags = ["both",
             "crossover",
             "mutate",
             "mut_shuffle"]
 
-    num_attempts = 5000
     for _ in range(num_attempts):
         for i in range(DIFFERENT_TESTS):
             time_start = time.time()
-            result = Solver(dots, NUM_CHILDREN, tag=tags[i], final=12).run()
+            result = Solver(dots, NUM_CHILDREN, tag=tags[i], final=FINAL).run()
             time_end = time.time()
             times[i] += time_end-time_start
             gens[i] += result[0]
-            accuracy[i] += 100 - 100*abs((brute_result[0]-result[1])/brute_result[0])
+            error = 100*abs((brute_result[0]-result[1])/brute_result[0])
+            if error > worst_miss[i]:
+                worst_miss[i] = error
+            accuracy[i] += 100 - error
             if round(result[1], 6) == rounded_brute:
                 reached_best[i] += 100
 
     for i in range(DIFFERENT_TESTS):
         print("Accuracy (", tags[i], "): ", accuracy[i]/num_attempts, sep='')
         print("Reached best:", reached_best[i] / num_attempts)
+        print("Worst miss:", worst_miss[i])
         print("Time per solve (Genetic Algorithm):", times[i]/num_attempts)
         print("Generations per solve (Genetic Algorithm):", gens[i] / num_attempts)
         print()
