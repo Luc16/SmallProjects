@@ -310,7 +310,7 @@ class GUI:
             self.screen.blit(self.font.render("Força bruta: " + str(self.brute_result[0]), True, (0, 0, 255)), (20, 10))
             self.draw_path_brute(self.brute_result[1])
         if self.result:
-            self.screen.blit(self.font.render("Algorítimo: " + str(self.result[1]), True, (255, 0, 0)), (20, 50))
+            self.screen.blit(self.font.render("Algoritmo: " + str(self.result[1]), True, (255, 0, 0)), (20, 50))
             self.draw_path(self.result[2])
             self.screen.blit(self.font.render("Acerto: " +
                                               str(round(100 - 100 *
