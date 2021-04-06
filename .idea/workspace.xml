@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ba320ef4-7c11-4aa6-a19b-826c66d87f56" name="Default Changelist" comment="Ajustes simples">
-      <change afterPath="$PROJECT_DIR$/Genetic_Algorithm/Caixeiro_GUI.py" afterDir="false" />
+    <list default="true" id="ba320ef4-7c11-4aa6-a19b-826c66d87f56" name="Default Changelist" comment="GUI para o algoritmo">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Genetic_Algorithm/Caixeiro_GUI.py" beforeDir="false" afterPath="$PROJECT_DIR$/Genetic_Algorithm/Caixeiro_GUI.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,7 +129,7 @@
       <recent name="$PROJECT_DIR$/KNN" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.Caixeiro_GUI">
+  <component name="RunManager" selected="Python.Caixeiro_GA">
     <configuration name="Caixeiro_GA" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="SmallProjects" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -237,8 +237,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.Caixeiro_GUI" />
         <item itemvalue="Python.Caixeiro_GA" />
+        <item itemvalue="Python.Caixeiro_GUI" />
         <item itemvalue="Python.Game" />
         <item itemvalue="Python.KNN" />
         <item itemvalue="Python.GA_teste" />
@@ -285,7 +285,21 @@
       <option name="project" value="LOCAL" />
       <updated>1617320137799</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="GUI para o algoritmo">
+      <created>1617638228257</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1617638228257</updated>
+    </task>
+    <task id="LOCAL-00006" summary="GUI para o algoritmo">
+      <created>1617638253748</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1617638253748</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -361,7 +375,8 @@
     <MESSAGE value="Caixeiro viajante vesão 1" />
     <MESSAGE value="Mutação por rearranjo adicionada" />
     <MESSAGE value="Ajustes simples" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ajustes simples" />
+    <MESSAGE value="GUI para o algoritmo" />
+    <option name="LAST_COMMIT_MESSAGE" value="GUI para o algoritmo" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/sudoku_GUI2.py" />

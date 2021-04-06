@@ -54,13 +54,13 @@ class Child:
         return ((p1[0] - p2[0])*(p1[0] - p2[0]) + (p1[1] - p2[1])*(p1[1] - p2[1]))**0.5
 
     def fit(self, cities, scores):
-        if self.score == 0:
-            for index, move in enumerate(self.moves):
-                if index < len(self.moves)-1:
-                    self.score += self.dist(cities[move], cities[self.moves[index+1]])
-                else:
-                    self.score += self.dist(cities[move], cities[0])
-            scores.append(1/self.score)
+        self.score = 0
+        for index, move in enumerate(self.moves):
+            if index < len(self.moves)-1:
+                self.score += self.dist(cities[move], cities[self.moves[index+1]])
+            else:
+                self.score += self.dist(cities[move], cities[0])
+        scores.append(1/self.score)
         # return self.score, self.moves
 
 
@@ -154,7 +154,7 @@ class Solver:
     def run(self):
         while True:
             # fit
-            self.score_list = self.score_list[:self.limit]
+            self.score_list = []
             for child in self.current_generation:
                 child.fit(self.cities, self.score_list)
             # sort
@@ -214,14 +214,16 @@ class GUI:
         self.time = ""
 
     def draw_path_brute(self, cities):
-        cities.append(0)
+        if len(cities) < len(self.dots) + 1:
+            cities.append(0)
         for idx, num in enumerate(cities[:-1]):
             pg.draw.line(self.screen, (0, 0, 255),
                          (self.dots[num][0] + 5, self.dots[num][1] + 5),
                          (self.dots[cities[idx+1]][0] + 5, self.dots[cities[idx+1]][1] + 5), 2)
 
     def draw_path(self, cities):
-        cities.append(0)
+        if len(cities) < len(self.dots) + 1:
+            cities.append(0)
         for idx, num in enumerate(cities[:-1]):
             pg.draw.line(self.screen, (255, 0, 0), self.dots[num], self.dots[cities[idx + 1]], 2)
 
