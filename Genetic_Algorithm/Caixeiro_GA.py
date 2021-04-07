@@ -73,7 +73,7 @@ class Solver:
         self.num_cities = len(cities)
         self.final = final
         random.seed()
-        self.keep_pct = 0.1
+        self.keep_pct = 0.05
         self.limit = int(self.keep_pct * self.num_children)
         self.num_gens = 0
 
@@ -100,7 +100,8 @@ class Solver:
 
     def mutate(self):
         for _ in range(random.randint(0, (self.num_children-self.limit)//20)):
-            chosen_child = random.choice(self.next_generation)
+            chosen_child = random.choice(self.next_generation[self.limit:])
+
             for _ in range(random.randint(1, self.num_cities)):
                 mutations = random.sample(range(1, self.num_cities), 2)
                 if mutations[0] != mutations[1]:
@@ -191,10 +192,10 @@ if __name__ == '__main__':
     print("Brute force time:", time_end-time_start)
     print()
 
-    NUM_CHILDREN = 150
+    NUM_CHILDREN = 500
     DIFFERENT_TESTS = 4
-    FINAL = 20
-    num_attempts = 1000
+    FINAL = 30
+    num_attempts = 100
 
     rounded_brute = round(brute_result[0], 6)
     gens = [0 for _ in range(DIFFERENT_TESTS)]
