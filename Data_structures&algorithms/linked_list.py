@@ -1,7 +1,7 @@
 class Node:
-    def __init__(self, data=None, next=None):
+    def __init__(self, data=None, nxt=None):
         self.data = data
-        self.next = next
+        self.next = nxt
 
 
 class LinkedList:
@@ -101,7 +101,7 @@ class LinkedList:
     def remove_by_value(self, data):
         if self.head is None:
             return
-        
+
         itr = self.head
         if itr.data == data:
             self.head = itr.next

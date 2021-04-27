@@ -1,7 +1,7 @@
 class Node:
-    def __init__(self, data=None, next=None, prev=None):
+    def __init__(self, data=None, nxt=None, prev=None):
         self.data = data
-        self.next = next
+        self.next = nxt
         self.prev = prev
 
 
@@ -57,18 +57,23 @@ class DoubleLinkedList:
         self.tail = node
 
     def insert_at(self, index, data):
-        if index < 0 or index > self.get_length():
+        length = self.get_length()
+        if index < 0 or index > length:
             raise Exception("Invalid Index")
 
         if index == 0:
             self.insert_at_beginning(data)
+            return
+        if index == length:
+            self.insert_at_end(data)
             return
 
         count = 0
         itr = self.head
         while itr:
             if count == index - 1:
-                node = Node(data, itr.next)
+                node = Node(data, itr.next, itr)
+                itr.next.prev = node
                 itr.next = node
                 break
 
@@ -88,6 +93,7 @@ class DoubleLinkedList:
         while itr:
             if count == index - 1:
                 itr.next = itr.next.next
+                itr.next.prev = itr
                 break
 
             itr = itr.next
@@ -105,7 +111,8 @@ class DoubleLinkedList:
         itr = self.head
         while itr:
             if itr.data == data_prev:
-                node = Node(data_to_insert, itr.next)
+                node = Node(data_to_insert, itr.next, itr)
+                itr.next.prev = node
                 itr.next = node
                 return
             itr = itr.next
@@ -121,6 +128,7 @@ class DoubleLinkedList:
             return
         while itr.next:
             if itr.next.data == data:
+                itr.next.next.prev = itr
                 itr.next = itr.next.next
                 return
             itr = itr.next
@@ -130,13 +138,14 @@ class DoubleLinkedList:
 if __name__ == '__main__':
     ll = DoubleLinkedList()
     ll.insert_values(["banana", "mango", "grapes", "orange"])
+    ll.insert_at_end("figs")
+    ll.insert_at(0, "jackfruit")
+    ll.insert_after_value("orange", "kiwi")
     ll.print_forward()
     ll.print_backward()
-    ll.insert_at_end("figs")
+    ll.insert_after_value("mango", "apple")
     ll.print_forward()
-    ll.insert_at(0, "jackfruit")
+    ll.print_backward()
+    ll.remove_by_value("orange")
     ll.print_forward()
-    ll.insert_at(6, "dates")
-    ll.print_forward()
-    ll.insert_at(2, "kiwi")
-    ll.print_forward()
+    ll.print_backward()
