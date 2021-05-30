@@ -4,23 +4,24 @@ from time import sleep, time
 
 
 def main():
-    stream_num = 300
-    url = f"https://cdn.jmvstream.com/w/IPC-8597/camera.stream/media-ulj0z9jqi_{stream_num}.ts"
+    initial_url = "https://cdn.jmvstream.com/w/IPC-8597/camera.stream/media-ue93wluap_"
+    stream_num = 2800
+    url = initial_url + f"{stream_num}.ts"
     cap = cv2.VideoCapture(url)
 
     print("--- Conectando... ---")
     while not cap.isOpened():
         stream_num += 1
-        url = f"https://cdn.jmvstream.com/w/IPC-8597/camera.stream/media-ulj0z9jqi_{stream_num}.ts"
+        url = initial_url + f"{stream_num}.ts"
         cap = cv2.VideoCapture(url)
-        if stream_num > 999:
+        if stream_num > 9999:
             return
 
     stream_num += 10
-    url = f"https://cdn.jmvstream.com/w/IPC-8597/camera.stream/media-ulj0z9jqi_{stream_num}.ts"
+    url = initial_url + f"{stream_num}.ts"
     cap = cv2.VideoCapture(url)
     stream_num += 1
-    url = f"https://cdn.jmvstream.com/w/IPC-8597/camera.stream/media-ulj0z9jqi_{stream_num}.ts"
+    url = initial_url + f"{stream_num}.ts"
     cap1 = cv2.VideoCapture(url)
 
     print("--- Conexão estabelecida!! ---")
@@ -32,7 +33,7 @@ def main():
             if current_frame is None:
                 stream_num += 1
                 cap = cap1
-                url = f"https://cdn.jmvstream.com/w/IPC-8597/camera.stream/media-ulj0z9jqi_{stream_num}.ts"
+                url = initial_url + f"{stream_num}.ts"
                 cap1 = cv2.VideoCapture(url)
                 ret, current_frame = cap.read()
                 if current_frame is None:
@@ -40,15 +41,15 @@ def main():
                     stream_num -= 1
                     while not cap.isOpened():
                         count += 1
-                        url = f"https://cdn.jmvstream.com/w/IPC-8597/camera.stream/media-ulj0z9jqi_{stream_num}.ts"
+                        url = initial_url + f"{stream_num}.ts"
                         cap = cv2.VideoCapture(url)
                         if cap.isOpened():
                             break
-                        url = f"https://cdn.jmvstream.com/w/IPC-8597/camera.stream/media-ulj0z9jqi_{stream_num+count}.ts"
+                        url = initial_url + f"{stream_num}.ts"
                         cap = cv2.VideoCapture(url)
                         if cap.isOpened():
                             break
-                        url = f"https://cdn.jmvstream.com/w/IPC-8597/camera.stream/media-ulj0z9jqi_{stream_num-count}.ts"
+                        url = initial_url + f"{stream_num}.ts"
                         cap = cv2.VideoCapture(url)
 
                         if stream_num > 999:
