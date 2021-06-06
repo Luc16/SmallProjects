@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ba320ef4-7c11-4aa6-a19b-826c66d87f56" name="Default Changelist" comment="Automations">
+    <list default="true" id="ba320ef4-7c11-4aa6-a19b-826c66d87f56" name="Default Changelist" comment="Better url">
+      <change afterPath="$PROJECT_DIR$/Automations/dynamic_wallpaper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Automations/teste_video.py" beforeDir="false" afterPath="$PROJECT_DIR$/Automations/teste_video.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -144,28 +146,7 @@
       <recent name="$PROJECT_DIR$/KNN" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.teste_video">
-    <configuration name="background_image" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="SmallProjects" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Automations" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Automations/background_image.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Python.dynamic_wallpaper">
     <configuration name="dynamic_background" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="SmallProjects" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -187,7 +168,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="sheets_test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="dynamic_wallpaper" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="SmallProjects" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -195,11 +176,32 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Automations/Sheets" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Automations" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Automations/Sheets/sheets_test.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Automations/dynamic_wallpaper.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="get_m3u8" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="SmallProjects" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Automations" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Automations/get_m3u8.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -252,11 +254,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.dynamic_wallpaper" />
         <item itemvalue="Python.teste_video" />
+        <item itemvalue="Python.get_m3u8" />
         <item itemvalue="Python.teste_video2" />
         <item itemvalue="Python.dynamic_background" />
-        <item itemvalue="Python.sheets_test" />
-        <item itemvalue="Python.background_image" />
       </list>
     </recent_temporary>
   </component>
@@ -349,7 +351,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622330451830</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Better url">
+      <created>1622381463645</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1622381463645</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -432,7 +441,8 @@
     <MESSAGE value="linked list and double linked list" />
     <MESSAGE value="fixed double linked list" />
     <MESSAGE value="Automations" />
-    <option name="LAST_COMMIT_MESSAGE" value="Automations" />
+    <MESSAGE value="Better url" />
+    <option name="LAST_COMMIT_MESSAGE" value="Better url" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/sudoku_GUI2.py" />
