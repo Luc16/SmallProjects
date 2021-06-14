@@ -275,9 +275,11 @@ class GUI:
                         self.run_text_box = False
                         if not self.ran_brute:
                             self.ran_brute = True
-                            self.brute_result = self.brute.run(self.dots)
+                            if len(self.dots) < 12:
+                                self.brute_result = self.brute.run(self.dots)
                         s_time = time.time()
                         self.result = Solver(self.dots, self.num_children, final=self.final).run()
+                        print("Ran algorithm for", len(self.dots), "cities")
                         best = self.result[1]
                         for _ in range(self.num_attempts-1):
                             result = Solver(self.dots, self.num_children, final=self.final).run()
@@ -308,16 +310,17 @@ class GUI:
             pg.draw.circle(self.screen, (0, 150, 0), self.dots[0], 10)
             for dot in self.dots[1:]:
                 pg.draw.circle(self.screen, (0, 0, 0), dot, 10)
-        if self.ran_brute:
+        if self.brute_result:
             self.screen.blit(self.font.render("Força bruta: " + str(self.brute_result[0]), True, (0, 0, 255)), (20, 10))
             self.draw_path_brute(self.brute_result[1])
         if self.result:
             self.screen.blit(self.font.render("Algoritmo: " + str(self.result[1]), True, (255, 0, 0)), (20, 50))
             self.draw_path(self.result[2])
-            self.screen.blit(self.font.render("Acerto: " +
-                                              str(round(100 - 100 *
-                                                        abs((self.brute_result[0] - self.result[1]) / self.brute_result[0]),
-                                                        2)) + " %", True, (0, 0, 0)), (750, 950))
+            if self.brute_result:
+                self.screen.blit(self.font.render("Acerto: " +
+                                                  str(round(100 - 100 *
+                                                            abs((self.brute_result[0] - self.result[1]) / self.brute_result[0]),
+                                                            2)) + " %", True, (0, 0, 0)), (750, 950))
         if self.run_text_box:
             self.draw_text_box()
         self.screen.blit(self.font.render("Tempo por resolução: "+self.time+" us", True, (0, 0, 0)), (20, 950))

@@ -180,8 +180,8 @@ class Solver:
         return self.num_gens, self.current_generation[0].score, self.current_generation[0].moves
 
 
-if __name__ == '__main__':
-    dots = [[random.randint(0, 1000), random.randint(0, 1000)] for _ in range(10)]
+def main():
+    dots = [[random.randint(0, 1000), random.randint(0, 1000)] for _ in range(5)]
 
     brute = Brute(len(dots))
     time_start = time.time()
@@ -229,3 +229,14 @@ if __name__ == '__main__':
         print("Time per solve (Genetic Algorithm):", times[i]/num_attempts)
         print("Generations per solve (Genetic Algorithm):", gens[i] / num_attempts)
         print()
+
+
+if __name__ == '__main__':
+    # main()
+    dots = [[random.randint(0, 1000), random.randint(0, 1000)] for _ in range(200)]
+    t_start = time.time()
+    rslt = Solver(dots, 2000, final=50).run()
+    t_end = time.time()
+    print(rslt[0], "geracoes")
+    print("Distancia percorrida:", rslt[1])
+    print(t_end-t_start)
