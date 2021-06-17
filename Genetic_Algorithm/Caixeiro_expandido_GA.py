@@ -36,51 +36,18 @@ class Brute:
         return best
 
 
-class Chromosome1:
-    def __init__(self, num_cities, num_routs, moves=None):
-        if moves is None:
-            moves = []
-        self.moves = moves
-        self.num_routs = num_routs
-        if not moves:
-            moves = [x for x in range(1, num_cities)]
-            random.shuffle(moves)
-        part = 0
-        for idx in range(num_routs, 1, -1):
-            prev_part = part
-            part = random.randint(prev_part+1, len(moves)-idx)
-            self.moves.append([0]+moves[prev_part:part])
-        self.moves.append([0] + moves[part:])
-        self.score = 0
-
-    @staticmethod
-    def dist(p1, p2):
-        return ((p1[0] - p2[0])*(p1[0] - p2[0]) + (p1[1] - p2[1])*(p1[1] - p2[1]))**0.5
-
-    def fit(self, cities, scores):
-        if self.score == 0:
-            for rout in self.moves:
-                for index, move in enumerate(rout):
-                    if index < len(rout)-1:
-                        self.score += self.dist(cities[move], cities[rout[index+1]])
-                    else:
-                        self.score += self.dist(cities[move], cities[0])
-            scores.append(1/self.score)
-        # return self.score, self.moves
-
-
 class Chromosome:
-    def __init__(self, num_cities, num_routs, moves=None):
-        if moves is None:
-            moves = []
+    def __init__(self, num_cities, num_routs, moves=None, routs=None):
         self.moves = moves
         self.num_routs = num_routs
-        self.routs = [random.randint(1, num_cities - num_routs)]
-        [self.routs.append(random.randint(self.routs[i - 1] + 1, num_cities - num_routs + i))for i in range(1, num_routs - 1)]
-        if not moves:
+        if moves is None:
             self.moves = list(range(1, num_cities))
             random.shuffle(self.moves)
-        self.routs.append(len(self.moves))
+        self.routs = routs
+        if routs is None:
+            self.routs = [random.randint(1, num_cities - num_routs)]
+            [self.routs.append(random.randint(self.routs[i - 1] + 1, num_cities - num_routs + i))for i in range(1, num_routs - 1)]
+            self.routs.append(len(self.moves))
         self.score = 0
 
     @staticmethod
@@ -280,32 +247,43 @@ def split(main_list, split_idxs):
     return arr
 
 
+def mutate(dots, num_routs, b, c):
+    new_chromosome = [Chromosome(len(dots), num_routs, moves=chromosome.moves, routs=chromosome.routs) for chromosome in (b, c)]
+    for _ in range(random.randint(1, len(dots) // 2)):
+        gene = random.randint(0, len(dots) - 2)
+        temp = new_chromosome[0].moves[gene]
+        indexes = [new_chromosome[0].moves.index(new_chromosome[1].moves[gene]), new_chromosome[1].moves.index(temp)]
+        new_chromosome[0].moves[gene] = new_chromosome[1].moves[gene]
+        new_chromosome[1].moves[gene] = temp
+        temp = new_chromosome[0].moves[indexes[0]]
+        new_chromosome[0].moves[indexes[0]] = new_chromosome[1].moves[indexes[1]]
+        new_chromosome[1].moves[indexes[1]] = temp
+    for i in range(c.num_routs):
+        old_rout1, old_rout2 = new_chromosome[0].routs[i], new_chromosome[1].routs[i]
+        for chromosome in new_chromosome:
+            chromosome.routs[i] = random.randint(min(old_rout1, old_rout2), max(old_rout1, old_rout2))
+            while chromosome.routs[i] in chromosome.routs[:i]+new_chromosome[0].routs[i+1:]:
+                chromosome.routs[i] = random.randint(min(old_rout1, old_rout2), max(old_rout1, old_rout2))
+    [chromosome.routs.sort() for chromosome in new_chromosome]
+    [chro.fit(dots, []) for chro in new_chromosome]
+    [print("Kid:", chro.score, chro.moves, chro.routs, split(chro.moves, chro.routs)) for chro in new_chromosome]
+
+
 def main2():
     dots = [[203, 119], [867, 817], [639, 648], [845, 52], [671, 89], [644, 410], [327, 214], [473, 125], [16, 6]]
     num_routs = 3
     brute = Brute(len(dots), num_routs)
     b_result = brute.run(dots)
     print(b_result, split(b_result[1], b_result[2]))
-    for _ in range(100000):
-        c = Chromosome(len(dots), num_routs)
-        c.fit(dots, [])
-        if round(c.score, 2) == round(b_result[0], 2):
-            print("C wins")
-            print(c.score, c.moves, c.routs, split(c.moves, c.routs))
-        # print(split(c.moves, c.routs), c.score)
-    # print(split(b.moves, b.routs), b.score)
-
-    # new_chromosome = [Chromosome(len(dots), chromosome.moves) for chromosome in (b, c)]
-    # for _ in range(random.randint(1, len(dots) // 2)):
-    #     gene = random.randint(1, len(dots) - 1)
-    #     temp = new_chromosome[0].moves[gene]
-    #     indexes = [new_chromosome[0].moves.index(new_chromosome[1].moves[gene]), new_chromosome[1].moves.index(temp)]
-    #     new_chromosome[0].moves[gene] = new_chromosome[1].moves[gene]
-    #     new_chromosome[1].moves[gene] = temp
-    #     temp = new_chromosome[0].moves[indexes[0]]
-    #     new_chromosome[0].moves[indexes[0]] = new_chromosome[1].moves[indexes[1]]
-    #     new_chromosome[1].moves[indexes[1]] = temp
-    # [print(chro.moves) for chro in new_chromosome]
+    c, b = Chromosome(len(dots), num_routs), Chromosome(len(dots), num_routs)
+    c.fit(dots, [])
+    b.fit(dots, [])
+    # if round(c.score, 2) == round(b_result[0], 2):
+    #     print("C wins")
+    #     print(c.score, c.moves, c.routs, split(c.moves, c.routs))
+    print("Parent C:", c.score, c.moves, c.routs, split(c.moves, c.routs))
+    print("Parent B:", b.score, b.moves, b.routs, split(b.moves, b.routs))
+    mutate(dots, num_routs, b, c)
 
 
 if __name__ == '__main__':
