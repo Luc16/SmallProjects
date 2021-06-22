@@ -247,10 +247,10 @@ def split(main_list, split_idxs):
     return arr
 
 
-def mutate(dots, num_routs, b, c):
-    new_chromosome = [Chromosome(len(dots), num_routs, moves=chromosome.moves, routs=chromosome.routs) for chromosome in (b, c)]
-    for _ in range(random.randint(1, len(dots) // 2)):
-        gene = random.randint(0, len(dots) - 2)
+def crossover(num_dots, num_routs, b, c):
+    new_chromosome = [Chromosome(num_dots, num_routs, moves=chromosome.moves, routs=chromosome.routs) for chromosome in (b, c)]
+    for _ in range(random.randint(1, num_dots // 2)):
+        gene = random.randint(0, num_dots - 2)
         temp = new_chromosome[0].moves[gene]
         indexes = [new_chromosome[0].moves.index(new_chromosome[1].moves[gene]), new_chromosome[1].moves.index(temp)]
         new_chromosome[0].moves[gene] = new_chromosome[1].moves[gene]
@@ -265,30 +265,59 @@ def mutate(dots, num_routs, b, c):
             while chromosome.routs[i] in chromosome.routs[:i]+new_chromosome[0].routs[i+1:]:
                 chromosome.routs[i] = random.randint(min(old_rout1, old_rout2), max(old_rout1, old_rout2))
     [chromosome.routs.sort() for chromosome in new_chromosome]
-    [chro.fit(dots, []) for chro in new_chromosome]
-    [print("Kid:", chro.score, chro.moves, chro.routs, split(chro.moves, chro.routs)) for chro in new_chromosome]
+    return new_chromosome
+
+
+def mutate_rout(routs, num_routs, num_dots):
+    idx, sign, amount = random.randint(0, num_routs-2), random.choice([-1, 1]), random.randint(1, num_dots-1)
+    routs[idx] += sign*amount
+    print(routs)
+    if idx == 0 and 0 < routs[idx] < routs[idx+1]:
+        return routs
+    if not (routs[idx-1] < routs[idx] < routs[idx+1]):
+        routs[idx] -= sign * amount
+    return routs
+
+
+def mutate(num_dots, num_routs, cromossomes):
+    chosen_chromosome = random.choice(cromossomes)
+    for _ in range(random.randint(0, num_dots-1)):
+        mutations = random.sample(range(0, num_dots-1), 2)
+        if mutations[0] != mutations[1]:
+            temp = chosen_chromosome.moves[mutations[0]]
+            chosen_chromosome.moves[mutations[0]] = chosen_chromosome.moves[mutations[1]]
+            chosen_chromosome.moves[mutations[1]] = temp
+    idx, sign, amount = random.randint(0, num_routs - 2), random.choice([-1, 1]), random.randint(1, num_dots//2)
+    chosen_chromosome.routs[idx] += sign * amount
+    if idx == 0 and 0 < chosen_chromosome.routs[idx] < chosen_chromosome.routs[idx + 1]:
+        return
+    if not (chosen_chromosome.routs[idx - 1] < chosen_chromosome.routs[idx] < chosen_chromosome.routs[idx + 1]):
+        chosen_chromosome.routs[idx] -= sign * amount
 
 
 def main2():
     dots = [[203, 119], [867, 817], [639, 648], [845, 52], [671, 89], [644, 410], [327, 214], [473, 125], [16, 6]]
     num_routs = 3
-    brute = Brute(len(dots), num_routs)
-    b_result = brute.run(dots)
-    print(b_result, split(b_result[1], b_result[2]))
-    c, b = Chromosome(len(dots), num_routs), Chromosome(len(dots), num_routs)
+    # brute = Brute(len(dots), num_routs)
+    # b_result = brute.run(dots)
+    # print(b_result, split(b_result[1], b_result[2]))
+    # for _ in range(100000):
+    c = Chromosome(len(dots), num_routs)
     c.fit(dots, [])
-    b.fit(dots, [])
-    # if round(c.score, 2) == round(b_result[0], 2):
-    #     print("C wins")
-    #     print(c.score, c.moves, c.routs, split(c.moves, c.routs))
-    print("Parent C:", c.score, c.moves, c.routs, split(c.moves, c.routs))
-    print("Parent B:", b.score, b.moves, b.routs, split(b.moves, b.routs))
-    mutate(dots, num_routs, b, c)
+    s = [c.score, [], [], []]
+    s[1] = [m for m in c.moves]
+    s[2] = [r for r in c.routs]
+    s[3] = split(s[1], s[2])
+    while s[2] == c.routs or s[0] < c.score:
+        mutate(len(dots), num_routs, [c])
+        c.score = 0
+        c.fit(dots, [])
+    print("Original C:", s[0], s[1], s[2], s[3])
+    print("Mutated C:", c.score, c.moves, c.routs, split(c.moves, c.routs))
+    # cs = crossover(len(dots), num_routs, b, c)
+    # [chro.fit(dots, []) for chro in cs]
+    # [print("Kid:", chro.score, chro.moves, chro.routs, split(chro.moves, chro.routs)) for chro in cs]
 
 
 if __name__ == '__main__':
     main2()
-    # dots = [[203, 119], [867, 817], [639, 648], [845, 52], [671, 89], [644, 410], [327, 214], [473, 125], [16, 6]]
-    # num_rout = 3
-    # c = Chromosome(len(dots), num_rout)
-    # c.fit(dots, [])

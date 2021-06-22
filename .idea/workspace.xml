@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ba320ef4-7c11-4aa6-a19b-826c66d87f56" name="Default Changelist" comment="Início caixeiro expandido">
+    <list default="true" id="ba320ef4-7c11-4aa6-a19b-826c66d87f56" name="Default Changelist" comment="crossover caixeiro expandido">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Genetic_Algorithm/Caixeiro_expandido_GA.py" beforeDir="false" afterPath="$PROJECT_DIR$/Genetic_Algorithm/Caixeiro_expandido_GA.py" afterDir="false" />
     </list>
@@ -371,7 +371,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623709272566</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="crossover caixeiro expandido">
+      <created>1623971466592</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1623971466592</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -457,7 +464,8 @@
     <MESSAGE value="Better url" />
     <MESSAGE value="dynamic wallpaper" />
     <MESSAGE value="Início caixeiro expandido" />
-    <option name="LAST_COMMIT_MESSAGE" value="Início caixeiro expandido" />
+    <MESSAGE value="crossover caixeiro expandido" />
+    <option name="LAST_COMMIT_MESSAGE" value="crossover caixeiro expandido" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/sudoku_GUI2.py" />
