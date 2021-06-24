@@ -67,86 +67,97 @@ class Chromosome:
 
 
 class Solver:
-    def __init__(self, cities, num_chromosome, num_routs, tag="both", final=6):
-        self.num_chromosome = num_chromosome
-        self.current_generation = [Chromosome(len(cities), num_routs) for _ in range(num_chromosome)]
+    def __init__(self, cities, num_chromosomes, num_routs, tag="both", final=6):
+        self.num_chromosomes = num_chromosomes
+        self.current_generation = [Chromosome(len(cities), num_routs) for _ in range(num_chromosomes)]
         self.next_generation = []
         self.score_list = []
         self.prev_scores = []
         self.cities = cities
         self.tag = tag
         self.num_cities = len(cities)
+        self.num_routs = num_routs
         self.final = final
         random.seed()
-        self.keep_pct = 0.05
-        self.limit = int(self.keep_pct * self.num_chromosome)
+        self.keep_pct = 0.1
+        self.limit = int(self.keep_pct * self.num_chromosomes)
         self.num_gens = 0
 
-    def just_mutate_shuffle(self):
-        for _ in range(self.limit, self.num_chromosome):
-            chosen_chromosome = random.choices(self.current_generation, weights=self.score_list, k=1)
-            new_chromosome = Chromosome(self.num_cities, chosen_chromosome[0].moves[1:])
-            rands = [random.randint(1, self.num_cities), random.randint(1, self.num_cities)]
-            rands.sort()
-            random.shuffle(new_chromosome.moves[rands[0]: rands[1]])
-            self.next_generation.append(new_chromosome)
-
     def just_mutate(self):
-        for _ in range(self.limit, self.num_chromosome):
+        for _ in range(self.limit, self.num_chromosomes):
             chosen_chromosome = random.choices(self.current_generation, weights=self.score_list, k=1)
-            new_chromosome = Chromosome(self.num_cities, chosen_chromosome[0].moves[1:])
-            for _ in range(random.randint(1, self.num_cities)):
-                mutations = random.sample(range(1, self.num_cities), 2)
+            new_chromosome = Chromosome(self.num_cities, self.num_routs, moves=chosen_chromosome[0].moves, routs=chosen_chromosome[0].routs)
+            for _ in range(random.randint(1, self.num_cities-1)):
+                mutations = random.sample(range(1, self.num_cities-1), 2)
                 if mutations[0] != mutations[1]:
                     temp = new_chromosome.moves[mutations[0]]
                     new_chromosome.moves[mutations[0]] = new_chromosome.moves[mutations[1]]
                     new_chromosome.moves[mutations[1]] = temp
+            idx, sign, amount = random.randint(0, self.num_routs - 2), random.choice([-1, 1]), random.randint(1, self.num_cities // 2)
+            new_chromosome.routs[idx] += sign * amount
+            if idx == 0 and 0 < new_chromosome.routs[idx] < new_chromosome.routs[idx + 1]:
+                continue
+            if not (new_chromosome.routs[idx - 1] < new_chromosome.routs[idx] < new_chromosome.routs[idx + 1]):
+                new_chromosome.routs[idx] -= sign * amount
             self.next_generation.append(new_chromosome)
 
     def mutate(self):
-        for _ in range(random.randint(0, (self.num_chromosome-self.limit)//20)):
+        for _ in range(random.randint(0, (self.num_chromosomes-self.limit)//20)):
             chosen_chromosome = random.choice(self.next_generation[self.limit:])
-
-            for _ in range(random.randint(1, self.num_cities)):
-                mutations = random.sample(range(1, self.num_cities), 2)
+            for _ in range(random.randint(0, self.num_cities-1)):
+                mutations = random.sample(range(0, self.num_cities-2), 2)
                 if mutations[0] != mutations[1]:
                     temp = chosen_chromosome.moves[mutations[0]]
                     chosen_chromosome.moves[mutations[0]] = chosen_chromosome.moves[mutations[1]]
                     chosen_chromosome.moves[mutations[1]] = temp
+            idx, sign, amount = random.randint(0, self.num_routs - 2), random.choice([-1, 1]), random.randint(1, self.num_cities // 2)
+            chosen_chromosome.routs[idx] += sign * amount
+            if idx == 0 and 0 < chosen_chromosome.routs[idx] < chosen_chromosome.routs[idx + 1]:
+                continue
+            if not (chosen_chromosome.routs[idx - 1] < chosen_chromosome.routs[idx] < chosen_chromosome.routs[idx + 1]):
+                chosen_chromosome.routs[idx] -= sign * amount
 
-    def mutate_shuffle(self):
-        for _ in range(random.randint(0, self.num_chromosome-self.limit)):
-            chosen_chromosome = random.choice(self.next_generation)
-            rands = [random.randint(1, self.num_cities), random.randint(1, self.num_cities)]
-            rands.sort()
-            random.shuffle(chosen_chromosome.moves[rands[0]: rands[1]])
+    def cross_routs(self, new_chromosomes, chosen_chromosomes):
+        for i in range(self.num_routs):
+            old_rout1, old_rout2 = new_chromosomes[0].routs[i], new_chromosomes[1].routs[i]
+            for idx, chromosome in enumerate(new_chromosomes):
+                chromosome.routs[i] = random.randint(min(old_rout1, old_rout2), max(old_rout1, old_rout2))
+                count = 0
+                while chromosome.routs[i] in chromosome.routs[:i] + new_chromosomes[0].routs[i + 1:]:
+                    count += 1
+                    if count == 10000:
+                        for j in range(2):
+                            new_chromosomes[i].routs = chosen_chromosomes[i].routs
+                        return
+                    chromosome.routs[i] = random.randint(min(old_rout1, old_rout2), max(old_rout1, old_rout2))
 
     def crossover(self):
-        for _ in range(self.limit, self.num_chromosome//2 + 1):
-            chosen_chromosome = random.choices(self.current_generation, weights=self.score_list, k=2)
-            new_chromosome = [Chromosome(self.num_cities, chromosome.moves[1:]) for chromosome in chosen_chromosome]
+        for _ in range(self.limit, self.num_chromosomes//2 + 1):
+            chosen_chromosomes = random.choices(self.current_generation, weights=self.score_list, k=2)
+            new_chromosomes = [Chromosome(self.num_cities, self.num_routs, moves=chromosome.moves, routs=chromosome.routs) for chromosome in chosen_chromosomes]
             for _ in range(random.randint(1, self.num_cities//2)):
-                gene = random.randint(1, self.num_cities-1)
-                temp = new_chromosome[0].moves[gene]
-                indexes = [new_chromosome[0].moves.index(new_chromosome[1].moves[gene]), new_chromosome[1].moves.index(temp)]
-                new_chromosome[0].moves[gene] = new_chromosome[1].moves[gene]
-                new_chromosome[1].moves[gene] = temp
-                temp = new_chromosome[0].moves[indexes[0]]
-                new_chromosome[0].moves[indexes[0]] = new_chromosome[1].moves[indexes[1]]
-                new_chromosome[1].moves[indexes[1]] = temp
-            if len(self.next_generation) == self.num_chromosome - 1:
-                self.next_generation.append(new_chromosome[0])
-            elif len(self.next_generation) == self.num_chromosome:
+                gene = random.randint(0, self.num_cities-2)
+                temp = new_chromosomes[0].moves[gene]
+                indexes = [new_chromosomes[0].moves.index(new_chromosomes[1].moves[gene]), new_chromosomes[1].moves.index(temp)]
+                new_chromosomes[0].moves[gene] = new_chromosomes[1].moves[gene]
+                new_chromosomes[1].moves[gene] = temp
+                temp = new_chromosomes[0].moves[indexes[0]]
+                new_chromosomes[0].moves[indexes[0]] = new_chromosomes[1].moves[indexes[1]]
+                new_chromosomes[1].moves[indexes[1]] = temp
+            self.cross_routs(new_chromosomes, chosen_chromosomes)
+            if len(self.next_generation) == self.num_chromosomes - 1:
+                self.next_generation.append(new_chromosomes[0])
+            elif len(self.next_generation) == self.num_chromosomes:
                 continue
             else:
-                [self.next_generation.append(chromosome) for chromosome in new_chromosome]
+                [self.next_generation.append(chromosome) for chromosome in new_chromosomes]
 
     def select(self):
         self.next_generation[:self.limit] += self.current_generation[:self.limit]
 
-    def end(self, final):
+    def end(self):
         size_scores = len(self.prev_scores)
-        if size_scores > final:
+        if size_scores > self.final:
             self.prev_scores = self.prev_scores[1:]
             grouped_scores = itertools.groupby(self.prev_scores)
             return next(grouped_scores, True) and not next(grouped_scores, False)
@@ -165,20 +176,17 @@ class Solver:
             self.prev_scores.append(self.current_generation[0].score)
             self.num_gens += 1
             # check end
-            if self.end(self.final):
+            if self.end():
                 break
             # evolve
             self.select()
             if self.tag == "both":
                 self.crossover()
                 self.mutate()
-                # self.mutate_shuffle()  # -------> not Helping
             elif self.tag == "crossover":
                 self.crossover()
             elif self.tag == "mutate":
                 self.just_mutate()
-            elif self.tag == "mut_shuffle":
-                self.just_mutate_shuffle()
 
             self.current_generation = self.next_generation
             self.next_generation = []
@@ -186,21 +194,23 @@ class Solver:
 
 
 def main():
-    dots = [[random.randint(0, 1000), random.randint(0, 1000)] for _ in range(8)]
+    # dots = [[random.randint(0, 1000), random.randint(0, 1000)] for _ in range(8)]
+    dots = [[203, 119], [867, 817], [639, 648], [845, 52], [671, 89], [644, 410], [327, 214], [473, 125], [16, 6], [533, 894]]
+    
+    NUM_CHROMOSOMES = 2000
+    NUM_ROUTS = 4
+    DIFFERENT_TESTS = 1
+    FINAL = 30
+    num_attempts = 50
 
-    brute = Brute(len(dots))
+    # brute = Brute(len(dots), NUM_ROUTS)
     time_start = time.time()
-    brute_result = brute.run(dots)
+    brute_result = [4053.898848912582]  # brute.run(dots)
     time_end = time.time()
 
     print("Brute force result:", brute_result)
     print("Brute force time:", time_end-time_start)
     print()
-
-    NUM_CHILDREN = 500
-    DIFFERENT_TESTS = 4
-    FINAL = 30
-    num_attempts = 100
 
     rounded_brute = round(brute_result[0], 6)
     gens = [0 for _ in range(DIFFERENT_TESTS)]
@@ -210,13 +220,12 @@ def main():
     worst_miss = [0 for _ in range(DIFFERENT_TESTS)]
     tags = ["both",
             "crossover",
-            "mutate",
-            "mut_shuffle"]
+            "mutate"]
 
-    for _ in range(num_attempts):
+    for j in range(num_attempts):
         for i in range(DIFFERENT_TESTS):
             time_start = time.time()
-            result = Solver(dots, NUM_CHILDREN, tag=tags[i], final=FINAL).run()
+            result = Solver(dots, NUM_CHROMOSOMES, NUM_ROUTS, tag=tags[i], final=FINAL).run()
             time_end = time.time()
             times[i] += time_end-time_start
             gens[i] += result[0]
@@ -268,17 +277,6 @@ def crossover(num_dots, num_routs, b, c):
     return new_chromosome
 
 
-def mutate_rout(routs, num_routs, num_dots):
-    idx, sign, amount = random.randint(0, num_routs-2), random.choice([-1, 1]), random.randint(1, num_dots-1)
-    routs[idx] += sign*amount
-    print(routs)
-    if idx == 0 and 0 < routs[idx] < routs[idx+1]:
-        return routs
-    if not (routs[idx-1] < routs[idx] < routs[idx+1]):
-        routs[idx] -= sign * amount
-    return routs
-
-
 def mutate(num_dots, num_routs, cromossomes):
     chosen_chromosome = random.choice(cromossomes)
     for _ in range(random.randint(0, num_dots-1)):
@@ -320,4 +318,4 @@ def main2():
 
 
 if __name__ == '__main__':
-    main2()
+    main()
