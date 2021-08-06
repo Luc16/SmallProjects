@@ -4,18 +4,39 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ba320ef4-7c11-4aa6-a19b-826c66d87f56" name="Default Changelist" comment="Caixeiro_expandido quase pronto">
+    <list default="true" id="ba320ef4-7c11-4aa6-a19b-826c66d87f56" name="Default Changelist" comment="Unfinished projects removed">
+      <change afterPath="$PROJECT_DIR$/venv/include/site/python3.8/pygame/_camera.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/include/site/python3.8/pygame/_pygame.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/include/site/python3.8/pygame/_surface.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/include/site/python3.8/pygame/camera.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/include/site/python3.8/pygame/fastevents.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/include/site/python3.8/pygame/font.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/include/site/python3.8/pygame/freetype.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/include/site/python3.8/pygame/include/_pygame.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/include/site/python3.8/pygame/include/bitmask.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/include/site/python3.8/pygame/include/pgcompat.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/include/site/python3.8/pygame/include/pgimport.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/include/site/python3.8/pygame/include/pgplatform.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/include/site/python3.8/pygame/include/pygame.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/include/site/python3.8/pygame/include/pygame_bufferproxy.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/include/site/python3.8/pygame/include/pygame_font.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/include/site/python3.8/pygame/include/pygame_freetype.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/include/site/python3.8/pygame/include/pygame_mask.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/include/site/python3.8/pygame/include/pygame_mixer.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/include/site/python3.8/pygame/include/sse2neon.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/include/site/python3.8/pygame/mask.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/include/site/python3.8/pygame/mixer.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/include/site/python3.8/pygame/palette.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/include/site/python3.8/pygame/pgarrinter.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/include/site/python3.8/pygame/pgbufferproxy.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/include/site/python3.8/pygame/pgcompat.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/include/site/python3.8/pygame/pgimport.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/include/site/python3.8/pygame/pgopengl.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/include/site/python3.8/pygame/pgplatform.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/include/site/python3.8/pygame/pygame.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/include/site/python3.8/pygame/scrap.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/include/site/python3.8/pygame/surface.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/A*/PathFinder.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Automations/Sheets/gspread-314200-6ebce4156e1a.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Automations/Sheets/sheets_test.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Automations/dynamic_wallpaper.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Automations/send_email.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data_structures&amp;algorithms/hash_maps/hashmap.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data_structures&amp;algorithms/hash_maps/nyc_weather.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data_structures&amp;algorithms/hash_maps/poem.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data_structures&amp;algorithms/linked_lists/double_linked_list.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data_structures&amp;algorithms/linked_lists/linked_list.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -401,7 +422,14 @@
       <option name="project" value="LOCAL" />
       <updated>1624542962404</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Unfinished projects removed">
+      <created>1628275314293</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1628275314293</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -490,7 +518,8 @@
     <MESSAGE value="crossover caixeiro expandido" />
     <MESSAGE value="Mutate implementado" />
     <MESSAGE value="Caixeiro_expandido quase pronto" />
-    <option name="LAST_COMMIT_MESSAGE" value="Caixeiro_expandido quase pronto" />
+    <MESSAGE value="Unfinished projects removed" />
+    <option name="LAST_COMMIT_MESSAGE" value="Unfinished projects removed" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/sudoku_GUI2.py" />
