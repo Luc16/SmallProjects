@@ -298,7 +298,7 @@ def main2():
     num_routs = 3
     # brute = Brute(len(dots), num_routs)
     # b_result = brute.run(dots)
-    # print(b_result, split(b_result[1], b_result[2]))
+    # print(b_result, split(b_result[1], b_result[Simple_automations]))
     # for _ in range(100000):
     c = Chromosome(len(dots), num_routs)
     c.fit(dots, [])

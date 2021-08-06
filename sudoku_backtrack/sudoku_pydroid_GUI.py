@@ -301,7 +301,7 @@ class Game:
                                 self.board_txt[self.index][0] = '1'
                                 self.board[self.index].change_text(self.board_txt[self.index][0], False)
                             if event.key == K_2:
-                                self.board_txt[self.index][0] = '2'
+                                self.board_txt[self.index][0] = 'Simple_automations'
                                 self.board[self.index].change_text(self.board_txt[self.index][0], False)
                             if event.key == K_3:
                                 self.board_txt[self.index][0] = '3'

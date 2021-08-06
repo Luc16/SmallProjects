@@ -4,40 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ba320ef4-7c11-4aa6-a19b-826c66d87f56" name="Default Changelist" comment="Unfinished projects removed">
-      <change afterPath="$PROJECT_DIR$/venv/include/site/python3.8/pygame/_camera.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/include/site/python3.8/pygame/_pygame.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/include/site/python3.8/pygame/_surface.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/include/site/python3.8/pygame/camera.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/include/site/python3.8/pygame/fastevents.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/include/site/python3.8/pygame/font.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/include/site/python3.8/pygame/freetype.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/include/site/python3.8/pygame/include/_pygame.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/include/site/python3.8/pygame/include/bitmask.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/include/site/python3.8/pygame/include/pgcompat.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/include/site/python3.8/pygame/include/pgimport.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/include/site/python3.8/pygame/include/pgplatform.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/include/site/python3.8/pygame/include/pygame.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/include/site/python3.8/pygame/include/pygame_bufferproxy.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/include/site/python3.8/pygame/include/pygame_font.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/include/site/python3.8/pygame/include/pygame_freetype.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/include/site/python3.8/pygame/include/pygame_mask.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/include/site/python3.8/pygame/include/pygame_mixer.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/include/site/python3.8/pygame/include/sse2neon.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/include/site/python3.8/pygame/mask.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/include/site/python3.8/pygame/mixer.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/include/site/python3.8/pygame/palette.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/include/site/python3.8/pygame/pgarrinter.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/include/site/python3.8/pygame/pgbufferproxy.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/include/site/python3.8/pygame/pgcompat.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/include/site/python3.8/pygame/pgimport.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/include/site/python3.8/pygame/pgopengl.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/include/site/python3.8/pygame/pgplatform.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/include/site/python3.8/pygame/pygame.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/include/site/python3.8/pygame/scrap.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/venv/include/site/python3.8/pygame/surface.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="ba320ef4-7c11-4aa6-a19b-826c66d87f56" name="Default Changelist" comment="Mutate implementado" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -160,7 +127,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Automations/Sheets" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
