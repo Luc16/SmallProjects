@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ba320ef4-7c11-4aa6-a19b-826c66d87f56" name="Default Changelist" comment="Unfinished projects removed" />
+    <list default="true" id="ba320ef4-7c11-4aa6-a19b-826c66d87f56" name="Default Changelist" comment="Fixed last commit">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -143,7 +145,7 @@
       <recent name="$PROJECT_DIR$/KNN" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.dynamic_wallpaper">
+  <component name="RunManager" selected="Python.rede">
     <configuration name="Caixeiro_GA" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="SmallProjects" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -228,7 +230,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="teste_video" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="rede" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="SmallProjects" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -236,11 +238,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Automations" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/RedeNeural" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Automations/teste_video.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/RedeNeural/rede.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -251,11 +253,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.rede" />
         <item itemvalue="Python.dynamic_wallpaper" />
         <item itemvalue="Python.Caixeiro_expandido_GA" />
         <item itemvalue="Python.Caixeiro_GA" />
         <item itemvalue="Python.Caixeiro_GUI" />
-        <item itemvalue="Python.teste_video" />
       </list>
     </recent_temporary>
   </component>
@@ -404,7 +406,14 @@
       <option name="project" value="LOCAL" />
       <updated>1628290140328</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Fixed last commit">
+      <created>1628290385258</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1628290385258</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -494,7 +503,8 @@
     <MESSAGE value="Mutate implementado" />
     <MESSAGE value="Caixeiro_expandido quase pronto" />
     <MESSAGE value="Unfinished projects removed" />
-    <option name="LAST_COMMIT_MESSAGE" value="Unfinished projects removed" />
+    <MESSAGE value="Fixed last commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed last commit" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/sudoku_GUI2.py" />
