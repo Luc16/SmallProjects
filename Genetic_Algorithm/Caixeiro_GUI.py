@@ -275,7 +275,7 @@ class GUI:
                         self.run_text_box = False
                         if not self.ran_brute:
                             self.ran_brute = True
-                            if len(self.dots) < 12:
+                            if len(self.dots) < 11:
                                 self.brute_result = self.brute.run(self.dots)
                         s_time = time.time()
                         self.result = Solver(self.dots, self.num_children, final=self.final).run()
