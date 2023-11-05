@@ -30,6 +30,15 @@ further implications after each step in the backtrack algorithm.
 |:------------------------------------------------------:|:-------------------------------:|:------------------------------------:|
 | <img src="images/img.png" alt="drawing" width="600"/>  | ![gif1](images/sudoku_back.gif) | ![gif1](images/sudoku_backwImpl.gif) |
 
+### [Simple Neural Network from Scratch](NeuralNetwork)
+
+Implementation of neural network using back propagation.
+
+### [Quick Automations](Simple_automations)
+
+Useful automation for dynamic wall paper in Linux using realtime data
+from camera at a Beach in Florianópolis Brasil. Program to send emails
+to friends for secret santa.
 
 ### [K-mean](K-mean)
 
@@ -40,16 +49,6 @@ clusters.
 
 Simple implementation of K Nearest Neighbors algorithm, where a point
 is classified based on its K closest points.
-
-### [Simple Neural Network from Scratch](NeuralNetwork)
-
-Implementation of neural network using back propagation.
-
-### [Quick Automations](Simple_automations)
-
-Useful automation for dynamic wall paper in Linux using realtime data
-from camera at a Beach in Florianópolis Brasil. Program to send emails
-to friends for secret santa.
 
 ### [Cows and bulls](Cows_and_Bulls)
 
