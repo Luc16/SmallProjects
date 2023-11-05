@@ -54,3 +54,7 @@ is classified based on its K closest points.
 
 Simple console implementation of the popular game cows and bulls with a
 solver to try to optmize the solution.
+
+## License
+
+This work is licensed under the terms of the GPLv3.

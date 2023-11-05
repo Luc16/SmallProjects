@@ -4,18 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ba320ef4-7c11-4aa6-a19b-826c66d87f56" name="Default Changelist" comment="secret santa">
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/img.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/sudoku_back.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/sudoku_backwImpl.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/ts1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/ts2.png" afterDir="false" />
+    <list default="true" id="ba320ef4-7c11-4aa6-a19b-826c66d87f56" name="Default Changelist" comment="readme better order of projects">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Genetic_Algorithm/Caixeiro_GUI.py" beforeDir="false" afterPath="$PROJECT_DIR$/Genetic_Algorithm/Caixeiro_GUI.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RedeNeural/rede.py" beforeDir="false" afterPath="$PROJECT_DIR$/NeuralNetwork/nn.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Simple_automations/Sheets/gspread-314200-6ebce4156e1a.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Simple_automations/Sheets/sheets_test.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,15 +130,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "/home/luc/PycharmProjects/SmallProjects/images",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/luc/PycharmProjects/SmallProjects/images&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/images" />
@@ -440,7 +430,23 @@
       <option name="project" value="LOCAL" />
       <updated>1699113539641</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="readme">
+      <option name="closed" value="true" />
+      <created>1699206090524</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1699206090524</updated>
+    </task>
+    <task id="LOCAL-00023" summary="readme better order of projects">
+      <option name="closed" value="true" />
+      <created>1699206167071</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1699206167071</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -531,7 +537,9 @@
     <MESSAGE value="Unfinished projects removed" />
     <MESSAGE value="Fixed last commit" />
     <MESSAGE value="secret santa" />
-    <option name="LAST_COMMIT_MESSAGE" value="secret santa" />
+    <MESSAGE value="readme" />
+    <MESSAGE value="readme better order of projects" />
+    <option name="LAST_COMMIT_MESSAGE" value="readme better order of projects" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/sudoku_GUI2.py" />
