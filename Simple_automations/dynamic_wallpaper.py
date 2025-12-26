@@ -22,7 +22,15 @@ FALL_BACK = "/usr/share/backgrounds/warty-final-ubuntu.png"
 current_video_url = None
 
 def set_wallpaper(image_path):
+    global INTERVAL
     """Define o wallpaper usando gsettings"""
+    if image_path == FALL_BACK:
+        print("Definindo wallpaper de fallback.")
+        # Aumenta o intervalo para 2h
+        INTERVAL = 7200
+    else:
+        # Reduz o intervalo para 5min
+        INTERVAL = 300
     try:
         # Precisamos do 'file://' para o gsettings em algumas versões
         file_uri = f"file://{image_path}"
@@ -121,9 +129,22 @@ def main():
     print(f"Intervalo: {INTERVAL} segundos.")
     print("Pressione Ctrl+C para parar.")
     
-    while True:
+    try:
+        # Run immediately on start
         capture_and_update()
-        time.sleep(INTERVAL)
+        
+        while True:
+            time.sleep(INTERVAL)
+            capture_and_update()
+
+    except (KeyboardInterrupt, SystemExit):
+        # This block catches Ctrl+C (KeyboardInterrupt) and systemctl stop (SystemExit)
+        pass
+        
+    finally:
+        # This block ALWAYS runs when the script exits, no matter how it stops
+        set_wallpaper(FALL_BACK)
+
 
 if __name__ == '__main__':
     main()
